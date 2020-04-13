@@ -28,7 +28,7 @@ class GHAPIService {
         let url = URL(string: urlStr)!
         
         var request = URLRequest(url: url)
-        request.addValue("cb541a35574127329a31faa5db88a8aa2d637e85", forHTTPHeaderField: "Authorization: token")
+        request.addValue("1c5b5129bddd5ce447eff5e1c9ca85be99be4277", forHTTPHeaderField: "Authorization: token")
         
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -76,7 +76,7 @@ class GHAPIService {
             completion(nil)
             return
         }
-        let urlString = String(format: "%@/%@?access_token=cb541a35574127329a31faa5db88a8aa2d637e85", Constants.individualUserURL, username)
+        let urlString = String(format: "%@/%@", Constants.individualUserURL, username)
         let url = URL(string: urlString)!
         
         if let cachedObject = userCache.object(forKey: url.absoluteString as NSString) {
@@ -85,7 +85,7 @@ class GHAPIService {
         }
         
         var request = URLRequest(url: url)
-        request.addValue("cb541a35574127329a31faa5db88a8aa2d637e85", forHTTPHeaderField: "Authorization: token")
+        request.addValue("1c5b5129bddd5ce447eff5e1c9ca85be99be4277", forHTTPHeaderField: "Authorization: token")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -124,8 +124,7 @@ class GHAPIService {
         guard let reposURL = user.repoURL else {
             return
         }
-        let formattedURLString = String(format: "%@?access_token=cb541a35574127329a31faa5db88a8aa2d637e85", reposURL)
-        let url = URL(string: formattedURLString)!
+        let url = URL(string: reposURL)!
         
         if let cachedObject = repoCache.object(forKey: url.absoluteString as NSString) {
             completion(cachedObject)
@@ -133,7 +132,7 @@ class GHAPIService {
         }
         
         var request = URLRequest(url: url)
-        request.addValue("cb541a35574127329a31faa5db88a8aa2d637e85", forHTTPHeaderField: "Authorization: token")
+        request.addValue("1c5b5129bddd5ce447eff5e1c9ca85be99be4277", forHTTPHeaderField: "Authorization: token")
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard let data = data, error == nil else {
