@@ -13,6 +13,7 @@
 		B45F0A35244421BB00DDB174 /* GHRepoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F0A34244421BB00DDB174 /* GHRepoWebViewController.swift */; };
 		B45F0A38244425A100DDB174 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45F0A37244425A100DDB174 /* WebKit.framework */; };
 		B49C350A24442F4B008882E7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C350924442F4B008882E7 /* Extensions.swift */; };
+		B49C350F24443B37008882E7 /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49C350E24443B37008882E7 /* CryptoKit.framework */; };
 		B4F5428D24429D8B00905ED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5428C24429D8B00905ED5 /* AppDelegate.swift */; };
 		B4F5429124429D8B00905ED5 /* GHRepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5429024429D8B00905ED5 /* GHRepoListViewController.swift */; };
 		B4F5429424429D8B00905ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4F5429224429D8B00905ED5 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		B45F0A34244421BB00DDB174 /* GHRepoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHRepoWebViewController.swift; sourceTree = "<group>"; };
 		B45F0A37244425A100DDB174 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B49C350924442F4B008882E7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B49C350E24443B37008882E7 /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = System/Library/Frameworks/CryptoKit.framework; sourceTree = SDKROOT; };
 		B4F5428924429D8B00905ED5 /* GithubRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4F5428C24429D8B00905ED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4F5429024429D8B00905ED5 /* GHRepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHRepoListViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B49C350F24443B37008882E7 /* CryptoKit.framework in Frameworks */,
 				B45F0A38244425A100DDB174 /* WebKit.framework in Frameworks */,
 				5B2CE94D88E13CDECDF0D7DA /* Pods_GithubRepos.framework in Frameworks */,
 			);
@@ -127,6 +130,7 @@
 		B45F0A36244425A100DDB174 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B49C350E24443B37008882E7 /* CryptoKit.framework */,
 				B45F0A37244425A100DDB174 /* WebKit.framework */,
 				F4BE7BB3D244427B9B3EADC8 /* Pods_GithubRepos.framework */,
 			);

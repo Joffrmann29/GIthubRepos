@@ -13,6 +13,7 @@ struct Constants {
     static let usersURL = "https://api.github.com/users"
     static let individualUserURL = "https://api.github.com/users"
     static let baseURL = "https://api.github.com/users"
+    static var encryptedToken = "N2I0ZWQxZjg2ZGY0MzJhN2IxMzBjNzI5MTI5Mzc1YWEwZDc5ZjBlNQ=="
 }
 
 class GHAPIService {
@@ -23,12 +24,19 @@ class GHAPIService {
     
     private init() { }
     
+    func getDecryptedToken() -> String {
+        guard let token = Constants.encryptedToken.fromBase64() else {
+            return ""
+        }
+        return token
+    }
+    
     func retrieveGHUsers(urlStr: String, completion: @escaping (_ users: [GHUser]?)-> Void) {
         var users = [GHUser]()
         let url = URL(string: urlStr)!
-        
         var request = URLRequest(url: url)
-        request.addValue("1c5b5129bddd5ce447eff5e1c9ca85be99be4277", forHTTPHeaderField: "Authorization: token")
+        
+        request.addValue(getDecryptedToken(), forHTTPHeaderField: "Authorization: token")
         
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -85,7 +93,7 @@ class GHAPIService {
         }
         
         var request = URLRequest(url: url)
-        request.addValue("1c5b5129bddd5ce447eff5e1c9ca85be99be4277", forHTTPHeaderField: "Authorization: token")
+        request.addValue(getDecryptedToken(), forHTTPHeaderField: "Authorization: token")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -132,7 +140,7 @@ class GHAPIService {
         }
         
         var request = URLRequest(url: url)
-        request.addValue("1c5b5129bddd5ce447eff5e1c9ca85be99be4277", forHTTPHeaderField: "Authorization: token")
+        request.addValue(getDecryptedToken(), forHTTPHeaderField: "Authorization: token")
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard let data = data, error == nil else {

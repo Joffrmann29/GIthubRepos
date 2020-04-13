@@ -10,5 +10,4 @@ target 'GithubRepos' do
   # Pods for StylHawk
 
   pod 'MBProgressHUD'
-
 end
