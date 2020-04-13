@@ -9,7 +9,10 @@
 import UIKit
 
 class GHRepoCell: UITableViewCell {
-
+    @IBOutlet weak var repoNameLabel: UILabel!
+    @IBOutlet weak var numForksLabel: UILabel!
+    @IBOutlet weak var numStarsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

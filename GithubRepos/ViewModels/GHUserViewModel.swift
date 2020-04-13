@@ -9,9 +9,5 @@
 import Foundation
 
 struct GHUserViewModel {
-    var ghUsers: [GHUser]
-    
-    init(ghUsers: [GHUser]) {
-        self.ghUsers = ghUsers
-    }
+    var ghUsers = [GHUser]() 
 }

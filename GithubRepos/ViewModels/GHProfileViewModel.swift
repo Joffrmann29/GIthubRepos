@@ -9,11 +9,9 @@
 import Foundation
 
 struct GHProfileViewModel {
-    var ghProfile: GHProfile?
-    var repos: [GHRepo]?
+    var user: GHUser?
     
-    init(ghProfile: GHProfile?, repos: [GHRepo]?) {
-        self.ghProfile = ghProfile
-        self.repos = repos
+    init(user: GHUser?) {
+        self.user = user
     }
 }

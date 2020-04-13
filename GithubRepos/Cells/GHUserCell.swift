@@ -9,7 +9,15 @@
 import UIKit
 
 class GHUserCell: UITableViewCell {
-
+    @IBOutlet weak var avatarImgView: UIImageView! {
+        didSet {
+            avatarImgView.layer.cornerRadius = avatarImgView.frame.size.width / 2
+            avatarImgView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var numReposLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -7,24 +7,27 @@
 //
 
 import UIKit
+import WebKit
 
 class GHRepoWebViewController: UIViewController {
-
+    @IBOutlet weak var webView: WKWebView!
+    var repo: GHRepo? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let repoName = self.repo?.name, let url = self.repo?.url else {
+            return
+        }
+        self.navigationItem.title =  repoName
+        self.webView.load(url)
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension WKWebView {
+    func load(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            load(request)
+        }
     }
-    */
-
 }

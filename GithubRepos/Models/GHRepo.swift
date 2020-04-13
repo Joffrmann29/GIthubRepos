@@ -8,13 +8,15 @@
 
 import Foundation
 
-struct GHRepo {
+class GHRepo {
     var name: String?
-    var stargazers_count: String?
-    var fork_count: String?
+    var url: String?
+    var stargazers_count: Int?
+    var fork_count: Int?
     
-    init(name: String?, stargazers_count: String?, fork_count: String?) {
+    init(name: String?, url: String?, stargazers_count: Int?, fork_count: Int?) {
         self.name = name
+        self.url = url
         self.stargazers_count = stargazers_count
         self.fork_count = fork_count
     }
