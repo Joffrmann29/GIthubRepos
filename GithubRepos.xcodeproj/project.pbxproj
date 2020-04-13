@@ -25,7 +25,6 @@
 		B4F542C12442A1F100905ED5 /* GHUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542C02442A1F100905ED5 /* GHUser.swift */; };
 		B4F542C32442B0A900905ED5 /* GHUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542C22442B0A900905ED5 /* GHUserViewModel.swift */; };
 		B4F542C52442B46800905ED5 /* GHProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542C42442B46800905ED5 /* GHProfile.swift */; };
-		B4F542C72442B5CB00905ED5 /* GHProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542C62442B5CB00905ED5 /* GHProfileViewModel.swift */; };
 		B4F542C92442B68C00905ED5 /* GHRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542C82442B68C00905ED5 /* GHRepo.swift */; };
 		B4F542CE2442B89100905ED5 /* GHProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542CD2442B89100905ED5 /* GHProfileViewController.swift */; };
 		B4F542D02442B8C800905ED5 /* GHAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F542CF2442B8C800905ED5 /* GHAPIService.swift */; };
@@ -74,7 +73,6 @@
 		B4F542C02442A1F100905ED5 /* GHUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHUser.swift; sourceTree = "<group>"; };
 		B4F542C22442B0A900905ED5 /* GHUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHUserViewModel.swift; sourceTree = "<group>"; };
 		B4F542C42442B46800905ED5 /* GHProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHProfile.swift; sourceTree = "<group>"; };
-		B4F542C62442B5CB00905ED5 /* GHProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHProfileViewModel.swift; sourceTree = "<group>"; };
 		B4F542C82442B68C00905ED5 /* GHRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHRepo.swift; sourceTree = "<group>"; };
 		B4F542CD2442B89100905ED5 /* GHProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHProfileViewController.swift; sourceTree = "<group>"; };
 		B4F542CF2442B8C800905ED5 /* GHAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHAPIService.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				B4F542C22442B0A900905ED5 /* GHUserViewModel.swift */,
-				B4F542C62442B5CB00905ED5 /* GHProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4F542C72442B5CB00905ED5 /* GHProfileViewModel.swift in Sources */,
 				B4F542C52442B46800905ED5 /* GHProfile.swift in Sources */,
 				B4F542CE2442B89100905ED5 /* GHProfileViewController.swift in Sources */,
 				B4F5429124429D8B00905ED5 /* GHRepoListViewController.swift in Sources */,

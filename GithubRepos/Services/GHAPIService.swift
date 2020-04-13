@@ -56,6 +56,9 @@ class GHAPIService {
                 }
                 completion(users)
             }
+            else {
+                completion(nil)
+            }
         }
         
         task.resume()
@@ -123,12 +126,15 @@ class GHAPIService {
                 }
                 completion(user)
             }
+            else {
+                completion(nil)
+            }
         }
         
         task.resume()
     }
         
-    func getUserRepos(user: GHUser, completion: @escaping (_ repos: GHRepo)-> Void) {
+    func getUserRepos(user: GHUser, completion: @escaping (_ repos: GHRepo?)-> Void) {
         guard let reposURL = user.repoURL else {
             return
         }
@@ -154,6 +160,9 @@ class GHAPIService {
                     let ghRepo = GHRepo(name: repoName, url: url, stargazers_count: numStars, fork_count: numForks)
                     completion(ghRepo)
                 }
+            }
+            else {
+                completion(nil)
             }
         })
         
