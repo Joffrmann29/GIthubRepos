@@ -84,7 +84,12 @@ class GHRepoListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchActive {
-            return self.users!.count
+            if let users = self.users {
+                return users.count
+            }
+            else {
+                return 0
+            }
         }
         else {
             return self.userViewModel.ghUsers.count
@@ -92,7 +97,10 @@ class GHRepoListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! GHUserCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as? GHUserCell else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+            return cell
+        }
         var user: GHUser?
         
         if !self.searchActive {
@@ -126,12 +134,17 @@ class GHRepoListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     public func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
+        guard let searchString = searchController.searchBar.text else {
+            return
+        }
         
         self.users = self.userViewModel.ghUsers.filter({ (user) -> Bool in
             var userFound = false
 
-            let usernameRange = NSString(string: user.username!).range(of: searchString!, options: String.CompareOptions.caseInsensitive)
+            guard let username = user.username else {
+                return false
+            }
+            let usernameRange = NSString(string: username).range(of: searchString, options: String.CompareOptions.caseInsensitive)
             userFound = usernameRange.location != NSNotFound
             
             

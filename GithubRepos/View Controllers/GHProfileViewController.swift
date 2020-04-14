@@ -81,7 +81,9 @@ class GHProfileViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.tableTopConstraint.constant = 0
             }
             GHAPIService.shared.getUserRepos(user: user) { (repo) in
-                self.repos.append(repo)
+                if let repo = repo {
+                    self.repos.append(repo)
+                }
                 DispatchQueue.main.async {
                     MBProgressHUD.hideIndicator(view: self.view)
                     self.tableView.reloadData()
@@ -110,7 +112,10 @@ class GHProfileViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as! GHRepoCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as? GHRepoCell else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath)
+            return cell
+        }
         var repo: GHRepo?
         
         if self.searchActive {
@@ -143,13 +148,15 @@ class GHProfileViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
+        guard let searchString = searchController.searchBar.text else {
+            return
+        }
         
         self.filteredRepos = self.repos.filter({ (repo) -> Bool in
             var repoFound = false
 
             if let name = repo.name {
-                let nameRange = NSString(string: name).range(of: searchString!, options: String.CompareOptions.caseInsensitive)
+                let nameRange = NSString(string: name).range(of: searchString, options: String.CompareOptions.caseInsensitive)
                 repoFound = nameRange.location != NSNotFound
             }
             

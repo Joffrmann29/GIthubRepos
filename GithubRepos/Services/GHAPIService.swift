@@ -33,7 +33,10 @@ class GHAPIService {
     
     func retrieveGHUsers(urlStr: String, completion: @escaping (_ users: [GHUser]?)-> Void) {
         var users = [GHUser]()
-        let url = URL(string: urlStr)!
+        guard let url = URL(string: urlStr) else {
+            completion(nil)
+            return
+        }
         var request = URLRequest(url: url)
         
         request.addValue(getDecryptedToken(), forHTTPHeaderField: "Authorization: token")
@@ -65,22 +68,25 @@ class GHAPIService {
     }
     
     func getImageForAvatarURL(avatarImgURL: String, completion: @escaping (_ img: UIImage?)-> Void) {
-            let url = URL(string: avatarImgURL)!
-            
-            let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-                guard let imgData = data else {
-                    completion(nil)
-                    return
-                }
-                guard let img = UIImage(data: imgData) else {
-                    completion(nil)
-                    return
-                }
-                completion(img)
-            })
-            
-            task.resume()
+        guard let url = URL(string: avatarImgURL) else {
+            completion(nil)
+            return
         }
+            
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+            guard let imgData = data else {
+                completion(nil)
+                return
+            }
+            guard let img = UIImage(data: imgData) else {
+                completion(nil)
+                return
+            }
+            completion(img)
+        })
+        
+        task.resume()
+    }
         
     func getProfileInfo(user: GHUser, completion: @escaping (_ user: GHUser?)-> Void) {
         guard let username = user.username else {
@@ -88,7 +94,10 @@ class GHAPIService {
             return
         }
         let urlString = String(format: "%@/%@", Constants.individualUserURL, username)
-        let url = URL(string: urlString)!
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
         
         if let cachedObject = userCache.object(forKey: url.absoluteString as NSString) {
             completion(cachedObject)
@@ -135,10 +144,10 @@ class GHAPIService {
     }
         
     func getUserRepos(user: GHUser, completion: @escaping (_ repos: GHRepo?)-> Void) {
-        guard let reposURL = user.repoURL else {
+        guard let reposURL = user.repoURL, let url = URL(string: reposURL) else {
+            completion(nil)
             return
         }
-        let url = URL(string: reposURL)!
         
         if let cachedObject = repoCache.object(forKey: url.absoluteString as NSString) {
             completion(cachedObject)
